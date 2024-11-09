@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rule of 72 Calculator</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #resultBox {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Rule of 72 Calculator</h2>
+        <p>Find out how many years it will take to double your investment.</p>
+
+        <label for="interestRate">Enter Annual Interest Rate (%):</label>
+        <input type="number" id="interestRate" placeholder="Enter Interest Rate" min="0">
+
+        <button onclick="calculateYears()">Calculate</button>
+
+        <div id="resultBox"></div>
+    </div>
+
+    <script>
+        function calculateYears() {
+            // Get interest rate value from input
+            var interestRate = parseFloat(document.getElementById("interestRate").value);
+            
+            // Validate the input
+            if (isNaN(interestRate) || interestRate <= 0) {
+                document.getElementById("resultBox").innerText = "Please enter a valid interest rate.";
+                return;
+            }
+
+            // Calculate years using Rule of 72
+            var years = 72 / interestRate;
+            document.getElementById("resultBox").innerText = "It will take approximately " + years.toFixed(2) + " years to double your investment at " + interestRate + "% annual interest.";
+        }
+    </script>
+
+</body>
+</html>
